@@ -2,7 +2,7 @@
 {
     internal class Wildebeest : Herbivore
     {
-        public Wildebeest(int weight = 30) : base(weight)
+        public Wildebeest() : base()
         {
         }
 

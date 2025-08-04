@@ -2,8 +2,6 @@
 {
     internal class Bison : Herbivore
     {
-        public Bison(int weight = 70) : base(weight)
-        {
-        }
+        public Bison() : base()    { }
     }
 }

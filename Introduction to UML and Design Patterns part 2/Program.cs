@@ -1,10 +1,10 @@
-﻿namespace Introduction_to_UML_and_Design_Patterns_part_2
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            /*Abstract Factory
+﻿using Introduction_to_UML_and_Design_Patterns_part_2.ContinentFactory.Africa;
+using Introduction_to_UML_and_Design_Patterns_part_2.ContinentFactory.Eurasia;
+using Introduction_to_UML_and_Design_Patterns_part_2.ContinentFactory.Eurasia.Animals;
+using Introduction_to_UML_and_Design_Patterns_part_2.ContinentFactory.NorthAmerica.Animal;
+
+namespace Introduction_to_UML_and_Design_Patterns_part_2
+{            /*Abstract Factory
 Спроектируйте приложение, используя паттерн «абстрактная
 фабрика», который будет симулировать животную жизнь на разных
 континентах земного шара.
@@ -63,6 +63,65 @@ o Питание плотоядных (Nutrition carnivores) - метод кли
 Постройте данную программу на паттерне «абстрактная фабрика».
 Дополните данное приложение, добавив новый континент «Евразия»,
 в котором травоядным будет «Лось» (Elk), а плотоядным - «Тигр» (Tiger).*/
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rnd = new Random();
+
+            // AFRICA
+            var africa = new Africa();
+            int hCountAfrica = rnd.Next(1 , 6);   
+            int cCountAfrica = rnd.Next(1 , 4);   
+
+            List<Herbivore> africaHerbivores = new();
+            for (int i = 0; i < hCountAfrica; i++)
+                africaHerbivores.Add(africa.CreateHerbivore());
+
+            List<Carnivore> africaCarnivores = new();
+            for (int i = 0; i < cCountAfrica; i++)
+                africaCarnivores.Add(africa.CreateCarnivore());
+
+            Console.WriteLine($"--- AFRICA ({hCountAfrica} herbivores, {cCountAfrica} carnivores) ---");
+            var africaWorld = new AnimalWorld(africaHerbivores , africaCarnivores);
+            africaWorld.MealsHerbivores();
+            africaWorld.NutritionCarnivores();
+            // AFRICA
+            var northAmerica = new NorthAmerica();
+            int hCountAmerica = rnd.Next(1 , 6);   
+            int cCountAmerica = rnd.Next(1 , 4);   
+
+            List<Herbivore> AmericaHerbivores = new();
+            for (int i = 0; i < hCountAmerica; i++)
+                AmericaHerbivores.Add(africa.CreateHerbivore());
+
+            List<Carnivore> AmericaCarnivores = new();
+            for (int i = 0; i < cCountAmerica; i++)
+                AmericaCarnivores.Add(northAmerica.CreateCarnivore());
+
+            Console.WriteLine($"\n--- America ({hCountAmerica} herbivores, {cCountAmerica} carnivores) ---");
+            var AmericaWorld = new AnimalWorld(AmericaHerbivores , AmericaCarnivores);
+            AmericaWorld.MealsHerbivores();
+            AmericaWorld.NutritionCarnivores();
+
+
+            // EURASIA
+            var eurasia = new Eurasia();
+            int hCountEu = rnd.Next(1 , 6);
+            int cCountEu = rnd.Next(1 , 4);
+
+            List<Herbivore> eurHerbivores = new();
+            for (int i = 0; i < hCountEu; i++)
+                eurHerbivores.Add(eurasia.CreateHerbivore());
+
+            List<Carnivore> eurCarnivores = new();
+            for (int i = 0; i < cCountEu; i++)
+                eurCarnivores.Add(eurasia.CreateCarnivore());
+
+            Console.WriteLine($"\n--- EURASIA ({hCountEu} herbivores, {cCountEu} carnivores) ---");
+            var eurasiaWorld = new AnimalWorld(eurHerbivores , eurCarnivores);
+            eurasiaWorld.MealsHerbivores();
+            eurasiaWorld.NutritionCarnivores();
         }
     }
 }

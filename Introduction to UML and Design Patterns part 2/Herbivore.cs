@@ -16,6 +16,7 @@ namespace Introduction_to_UML_and_Design_Patterns_part_2
         }
         public virtual void EatGrass()
         {
+            Console.WriteLine($"{this.GetType().Name} кушает траву.");
             Weight += 10;
         }
         public override string ToString()

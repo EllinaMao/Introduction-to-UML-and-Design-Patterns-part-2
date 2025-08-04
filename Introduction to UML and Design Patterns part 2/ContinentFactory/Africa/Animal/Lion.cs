@@ -2,7 +2,7 @@
 {
     internal class Lion : Carnivore
     {
-        public Lion(int power = 50) : base(power)
+        public Lion() : base()
         {
         }
     }

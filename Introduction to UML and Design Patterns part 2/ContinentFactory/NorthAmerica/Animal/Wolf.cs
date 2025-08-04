@@ -2,7 +2,7 @@
 {
     internal class Wolf : Carnivore
     {
-        public Wolf(int power = 30) : base(power)
+        public Wolf() : base()
         {
         }
     }

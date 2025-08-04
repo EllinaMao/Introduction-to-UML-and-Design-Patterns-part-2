@@ -9,7 +9,7 @@ namespace Introduction_to_UML_and_Design_Patterns_part_2
     public abstract class Carnivore
     {
         public int Power { get; protected set; }
-        public Carnivore(int power = 20)
+        public Carnivore(int power = 50)
         {
             Power = power;
         }
